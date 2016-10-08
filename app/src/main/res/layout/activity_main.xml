@@ -11,18 +11,19 @@
     tools:context="com.pw.paphat.myrobot.MainActivity">
 
     <TextView
-        android:text="0"
+
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textSize="100sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:text="0"
+        android:textSize="100sp" />
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar3"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp" />
 </RelativeLayout>
