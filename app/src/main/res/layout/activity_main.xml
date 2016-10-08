@@ -10,15 +10,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.pw.paphat.myrobot.MainActivity">
 
-    <TextView
-
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="0"
-        android:textSize="100sp" />
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="0"
+            android:textSize="100sp" />
+
+   <!--     <TextView
+
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_alignBottom="@+id/textView"
+            android:text="0"
+            android:textSize="100sp" />-->
+
+
+
+    </LinearLayout>
+
 
     <SeekBar
         android:id="@+id/seekBar"
