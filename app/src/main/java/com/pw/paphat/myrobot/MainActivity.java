@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView,textView2;
     private SeekBar seekBar;
     private int anInt = 0;
+    private RadioGroup radioGroup;
+    private String[] strings = new String[]{"Servo1=","Servo2=","Servo3=","Servo4="};
+    private int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,31 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 //        textView2 = (TextView) findViewById(R.id.textView2);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
+        radioGroup = (RadioGroup) findViewById(R.id.redservo);
+
+        //Radio Controller
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                switch (checkedId) {
+
+                    case R.id.radioButton:
+                        index=0;
+                        break;
+                    case R.id.radioButton2:
+                        index=1;
+                        break;
+                    case R.id.radioButton3:
+                        index=2;
+                        break;
+                    case R.id.radioButton4:
+                        index=3;
+                        break;
+                }
+
+            }   //onChecked
+        });
 
         //SeekBar controller
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -76,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Explicit
         private Context context;
-        private static final String urlSTRING = "https://dweet.io/dweet/for/Rcsa?Servo1=";
+        //private static final String urlSTRING = "https://dweet.io/dweet/for/Rcsa?Servo1=";    //old private
+        private static final String urlSTRING = "https://dweet.io/dweet/for/Rcsa?"; //new private
 
         public UpLoadValue(Context context) {
             this.context = context;
@@ -88,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-                String urlDweet = urlSTRING + Integer.toString(params[0]);
+                //String urlDweet = urlSTRING + Integer.toString(params[0]);    //old String
+                String urlDweet = urlSTRING + strings[index] + Integer.toString(params[0]); //new String
 
                 OkHttpClient okHttpClient = new OkHttpClient();
                 Request.Builder builder = new Request.Builder();
